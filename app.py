@@ -1,10 +1,16 @@
-from bottle import default_app, request, response, run, get, post
+from bottle import default_app, response, run, get, static_file, view
 import x
 
 ##############################
+@get("/static/<file_name>")
+def _(file_name):
+  return static_file(file_name, root="./static")
+
+##############################
 @get("/")
+@view("view_index.html")
 def _():
-  pass
+  return
 
 
 ##############################
@@ -18,19 +24,10 @@ def _():
     return {"info":str(ex)}
 
 ##############################
-# api-create-item
-import api_create_item
 
 
 ##############################
-@get("/items")
-def _():
-  try:
-    x.validate_page_number()
-    return "x"
-  except Exception as ex:
-    response.status = 400
-    return {"info":f"{str(ex)}"}
+import api_create_item
 
 
 ##############################

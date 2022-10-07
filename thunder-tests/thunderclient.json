@@ -4,11 +4,11 @@
     "colId": "352ec2f0-b20a-479a-b0ec-199ebc9c9e27",
     "containerId": "",
     "name": "create item",
-    "url": "127.0.0.1:3333/items",
+    "url": "127.0.0.1:3333/api-create-item",
     "method": "POST",
     "sortNum": 20000,
     "created": "2022-10-02T13:57:14.917Z",
-    "modified": "2022-10-07T15:13:54.219Z",
+    "modified": "2022-10-07T15:56:53.273Z",
     "headers": [],
     "params": [],
     "body": {
@@ -21,11 +21,15 @@
         },
         {
           "name": "item_description",
-          "value": "ab"
+          "value": "Nike shoes"
         },
         {
           "name": "item_price",
           "value": "10"
+        },
+        {
+          "name": "æ",
+          "value": ""
         }
       ]
     },
