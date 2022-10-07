@@ -1,0 +1,136 @@
+[
+  {
+    "_id": "f16e04b3-2792-4943-844d-8b87a937a120",
+    "colId": "352ec2f0-b20a-479a-b0ec-199ebc9c9e27",
+    "containerId": "",
+    "name": "create item",
+    "url": "127.0.0.1:3333/items",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2022-10-02T13:57:14.917Z",
+    "modified": "2022-10-07T14:44:05.063Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "item_name",
+          "value": "Santiago"
+        },
+        {
+          "name": "item_description",
+          "value": "ab"
+        },
+        {
+          "name": "item_price",
+          "value": "1222,20"
+        }
+      ]
+    },
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "Content-Type",
+        "custom": "",
+        "action": "equal",
+        "value": "application/json"
+      },
+      {
+        "type": "json-query",
+        "custom": "json.id",
+        "action": "istype",
+        "value": "string"
+      },
+      {
+        "type": "json-query",
+        "custom": "json.name",
+        "action": "istype",
+        "value": "string"
+      },
+      {
+        "type": "json-query",
+        "custom": "json.price",
+        "action": "regex",
+        "value": "^[1-9][0-9]*,[0-9]{2}$"
+      }
+    ]
+  },
+  {
+    "_id": "ed704771-e8a9-4a18-8ddb-d5f17b7e02c4",
+    "colId": "352ec2f0-b20a-479a-b0ec-199ebc9c9e27",
+    "containerId": "",
+    "name": "get items from to",
+    "url": "127.0.0.1:3333/items?page=1",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2022-10-02T14:09:16.536Z",
+    "modified": "2022-10-02T14:49:56.344Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "page",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "4bd7b2a6-9258-4629-bcf1-a2d106831527",
+    "colId": "352ec2f0-b20a-479a-b0ec-199ebc9c9e27",
+    "containerId": "",
+    "name": "get all items",
+    "url": "127.0.0.1:3333/api-get-all-items",
+    "method": "GET",
+    "sortNum": 40000,
+    "created": "2022-10-06T21:01:10.135Z",
+    "modified": "2022-10-07T14:45:26.615Z",
+    "headers": [],
+    "params": [],
+    "tests": [
+      {
+        "type": "res-code",
+        "custom": "",
+        "action": "equal",
+        "value": "200"
+      },
+      {
+        "type": "Content-Type",
+        "custom": "",
+        "action": "equal",
+        "value": "application/json"
+      },
+      {
+        "type": "res-body",
+        "custom": "",
+        "action": "isjson",
+        "value": ""
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].id",
+        "action": "istype",
+        "value": "string"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].name",
+        "action": "istype",
+        "value": "string"
+      },
+      {
+        "type": "json-query",
+        "custom": "json[0].price",
+        "action": "regex",
+        "value": "^[1-9][0-9]*,[0-9]{2}$"
+      }
+    ]
+  }
+]
