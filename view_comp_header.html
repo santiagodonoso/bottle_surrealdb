@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="static/css_mobile.css">
+  <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/static/css_mobile.css">
   <title>
     {{ get('title', 'Company') }}
   </title>
@@ -13,13 +13,13 @@
 <body>
 
   <nav>
-    <a href="/" class="active" onclick="spa(); return false">
+    <a href="/" {{ !get('home_link_active', '') }} onclick="spa(); return false">
       Home
     </a>
-    <a href="items" onclick="spa(); return false">
+    <a href="/items" {{ !get('items_link_active', '') }} onclick="spa(); return false">
       Items
     </a>
-    <a href="create-item" onclick="spa(); return false">
+    <a href="/create-item" {{ !get('create_item_link_active', '') }} onclick="spa(); return false">
       Create item
     </a>
   </nav>

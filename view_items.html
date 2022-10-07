@@ -1,0 +1,30 @@
+% if not is_spa:
+  % include("view_comp_header.html")
+% end
+
+<main
+  class=""
+  data-spa="yes"
+  data-spa_url="/items"
+  data-spa_title = "Items"
+  data-spa_hide="[data-spa]"
+  data-spa_set_active_class = "nav a[href='/items']"
+>
+  <div id="items">
+    % for item in items:
+    <div class="item">
+      <div>{{item['id']}}</div>
+      <div>{{item['name']}}</div>
+      <div>{{item['price']}}</div>
+      <a href="/item/{{item['id']}}" onclick="spa(); return false">
+        See more
+      </a>      
+    </div>
+    % end
+  </div>
+</main>
+
+
+% if not is_spa:
+  % include("view_comp_footer.html")
+% end

@@ -1,4 +1,4 @@
-from bottle import default_app, request, response, run, get, static_file, view
+from bottle import default_app, error, redirect,request, response, run, get, static_file, view
 import x
 
 ##############################
@@ -11,7 +11,26 @@ def _(file_name):
 @view("view_index.html")
 def _(): 
   is_spa = True if request.headers.get('SPA') else False
-  return dict(title="Home", is_spa=is_spa)
+  return dict(title="Home", is_spa=is_spa, home_link_active='class="active"')
+
+
+##############################
+@get("/items")
+@view("view_items")
+def _():
+  items = [{"id":1, "name":"A", "price":10},{"id":2, "name":"B", "price":20}]
+  is_spa = True if request.headers.get('SPA') else False
+  return dict(title="Items", is_spa=is_spa, items_link_active='class="active"', items=items)  
+
+##############################
+@get("/item/<item_id>")
+@view("view_item")
+def _(item_id):
+  item = {"id":item_id, "name":"A", "price":10}
+  is_spa = True if request.headers.get('SPA') else False
+  return dict(title=f"Item {item_id}", is_spa=is_spa, items_link_active='class="active"', item=item)  
+
+
 
 ##############################
 @get("/create-item")
@@ -19,7 +38,17 @@ def _():
 def _():
   print('HTTP_SPA', request.headers.get('SPA'))
   is_spa = True if request.headers.get('SPA') else False
-  return dict(title="Create item", is_spa=is_spa)  
+  return dict(title="Create item", is_spa=is_spa, create_item_link_active='class="active"')  
+
+
+##############################
+@error(404)
+@view("view_404")
+def _(error):
+  is_spa = True if request.headers.get('SPA') else False
+  response.status= 200
+  return dict(title="Ups", is_spa=is_spa)  
+
 
 ##############################
 @get("/api-get-all-items")
