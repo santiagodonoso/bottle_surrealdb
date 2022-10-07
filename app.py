@@ -10,15 +10,15 @@ def _(file_name):
 @get("/")
 @view("view_index.html")
 def _(): 
-  is_spa = True if request.headers.get('HTTP_SPA') else False
+  is_spa = True if request.headers.get('SPA') else False
   return dict(title="Home", is_spa=is_spa)
 
 ##############################
 @get("/create-item")
 @view("view_create_item.html")
 def _():
-  print('HTTP_SPA', request.headers.get('HTTP_SPA'))
-  is_spa = True if request.headers.get('HTTP_SPA') else False
+  print('HTTP_SPA', request.headers.get('SPA'))
+  is_spa = True if request.headers.get('SPA') else False
   return dict(title="Create item", is_spa=is_spa)  
 
 ##############################
