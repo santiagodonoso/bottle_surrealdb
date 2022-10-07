@@ -1,4 +1,4 @@
-from bottle import default_app, response, run, get, static_file, view
+from bottle import default_app, request, response, run, get, static_file, view
 import x
 
 ##############################
@@ -9,9 +9,17 @@ def _(file_name):
 ##############################
 @get("/")
 @view("view_index.html")
-def _():
-  return
+def _(): 
+  is_spa = True if request.headers.get('HTTP_SPA') else False
+  return dict(title="Home", is_spa=is_spa)
 
+##############################
+@get("/create-item")
+@view("view_create_item.html")
+def _():
+  print('HTTP_SPA', request.headers.get('HTTP_SPA'))
+  is_spa = True if request.headers.get('HTTP_SPA') else False
+  return dict(title="Create item", is_spa=is_spa)  
 
 ##############################
 @get("/api-get-all-items")

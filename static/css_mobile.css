@@ -1,0 +1,34 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 1.1rem;
+  font-weight: 300;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body{
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+nav{
+  display: grid;
+  grid-template-columns: 100fr 100fr 100fr;
+  justify-items: center;
+  align-items: center;
+  height: 4rem;
+  background: cadetblue;
+}
+nav a{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: white;
+}
+nav a.active{
+  background: rgba(0, 0, 0, 0.5);
+}
