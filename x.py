@@ -12,8 +12,8 @@ SURREALDB_USER_PASSWORD = "password"
 
 ITEM_NAME_MIN         = 2
 ITEM_NAME_MAX         = 20
-ITEM_DESCRIPTION_MIN  = 2
-ITEM_DESCRIPTION_MAX  = 20
+ITEM_DESCRIPTION_MIN  = 10
+ITEM_DESCRIPTION_MAX  = 200
 ITEM_PRICE_REGEX      = "^[1-9][0-9]*,[0-9]{2}$"
 
 ##############################
